@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		// Deno有効化
+		"deno.enable": true,
+		// VSCode上のDenoのオートコンプリートを tools/deno.exe を参照するようにする
+		"deno.path": ".\\tools\\deno.exe",
+		// VSCodeのターミナルで開いた際に tools/ にパスを通して
+		// ".\deno.exe [...command]" ではなく "deno [...command]" と実行できる
+		// VSCodeのプロファイル "Deno portable" を定義
+		// @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
+		"terminal.integrated.shellIntegration.enabled": true,
+		"terminal.integrated.profiles.windows": {
+			"Deno portable": {
+				"source": "PowerShell",
+				"icon": "terminal-powershell",
+				"args": [
+					"-NoExit",
+					"-Command",
+					"& { . \".\\.vscode\\profile.ps1\" }"
+				]
+			}
+		},
+		// "Deno portable" プロファイルでVSCodeを起動するようにする
+		// @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
+		"terminal.integrated.defaultProfile.windows": "Deno portable"
+	}
+}
