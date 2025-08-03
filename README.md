@@ -54,5 +54,19 @@ typescript 5.8.3
 
 ## Deno について
 
-**[Deno](https://github.com/denoland/deno)** TODO
+**[Deno（ディーノ又はデノ）](https://github.com/denoland/deno)** は、JavaScriptやTypeScriptという言語を使ってプログラムを動かすための「実行環境（ランタイム）」です。これは、パソコンやスマホの中でプログラムがちゃんと動くように助ける"土台"のようなものです。
+
+Denoを作ったのはRyan Dahl（ライアン・ダール）という方で、彼は以前に「Node.js（ノードジェイエス）」という有名な実行環境も作った人物です。ただ、Node.jsにはあとから気づいたいくつかの問題があり、それを直したより新しい形としてDenoを作りました。
+
+※DenoはNodeのアナグラムです。
+
+Denoはセキュリティに気をつけていて、危険な操作は自動ではできないようになっています。また、特別な設定をしなくてもTypeScriptという便利な言語が使えます。シンプルで安全に使えるように工夫されているのが特徴です。
+
+※今回はJavaScriptの拡張言語のTypeScriptは使用せずにJavaScriptを利用します。
+
+> [!NOTE]
+> 先発のNode.JSに比べ後発のDenoの方が良さそうに思えますが、以下調査の通りNode.JSがJavaScriptランタイムとして圧倒的なシェアを誇っています。  
+> [State of JavaScript 2024: そのほかのツール](https://2024.stateofjs.com/ja-JP/other-tools/#runtimes)  
+> 今回は学校のPCにNode.JSがインストールされていないことや、セットアップが簡単なことを理由にDenoを用いてJavaScriptの学習を進めていきます。  
+> Denoの独自の記述も授業後半で出てくるので、都度資料にも追記、口頭によるフォローを入れていきますのでご安心を。
 
