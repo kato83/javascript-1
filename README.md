@@ -30,4 +30,4 @@
 
 ## セットアップ
 
-[Release v2.4.2 · denoland/deno](https://github.com/denoland/deno/releases/tag/v2.4.2) より [deno-x86_64-pc-windows-msvc.zip](https://github.com/denoland/deno/releases/download/v2.4.2/deno-x86_64-pc-windows-msvc.zip) をダウンロードし、ZIPファイルの中にある `deno.zip` を `tools/` 直下（つまり `./tools/deno.exe` となるよう）に配置してください。
+[Release v2.4.3 · denoland/deno](https://github.com/denoland/deno/releases/tag/v2.4.3) より [deno-x86_64-pc-windows-msvc.zip](https://github.com/denoland/deno/releases/download/v2.4.3/deno-x86_64-pc-windows-msvc.zip) をダウンロードし、ZIPファイルの中にある `deno.zip` を `tools/` 直下（つまり `./tools/deno.exe` となるよう）に配置してください。
