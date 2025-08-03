@@ -4,6 +4,8 @@
 
 ### 開発プロジェクトのダウンロード
 
+![](./_img/01.png)
+
 1. この [kato83/javascript-1](https://github.com/kato83/javascript-1/tree/main) 開発プロジェクト（リポジトリ）のソースコードをZIPでダウンロードしてください。
 2. ZIPでダウンロードできたファイルはデスクトップ上で解凍してください。
 3. PC上でJavaScriptをブラウザ無しで扱えるようにするため [Release v2.4.3 · denoland/deno](https://github.com/denoland/deno/releases/tag/v2.4.3) より [deno-x86_64-pc-windows-msvc.zip](https://github.com/denoland/deno/releases/download/v2.4.3/deno-x86_64-pc-windows-msvc.zip) をダウンロードし、ZIPファイルの中にある `deno.zip` を `tools/` 直下（つまり `./tools/deno.exe` となるよう）に配置してください。
