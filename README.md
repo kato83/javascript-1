@@ -9,7 +9,7 @@
 1. この [kato83/javascript-1](https://github.com/kato83/javascript-1/tree/main) 開発プロジェクト（リポジトリ）のソースコードをZIPでダウンロードしてください。
 2. ZIPでダウンロードできたファイルはデスクトップ上で解凍してください。
 3. PC上でJavaScriptをブラウザ無しで扱えるようにするため [Release v2.4.3 · denoland/deno](https://github.com/denoland/deno/releases/tag/v2.4.3) より [deno-x86_64-pc-windows-msvc.zip](https://github.com/denoland/deno/releases/download/v2.4.3/deno-x86_64-pc-windows-msvc.zip) をダウンロードし、ZIPファイルの中にある `deno.zip` を `tools/` 直下（つまり `./tools/deno.exe` となるよう）に配置してください。
-4. 解凍したフォルダの直下にある `javascript1.code-workspace` よりVisual Studio Code（以下VSCode）で起動できることを確認してください。
+4. 解凍したフォルダの直下にある `javascript1.code-workspace` をダブルクリックで開き、Visual Studio Code（以下VSCode）が起動することを確認してください。
     1. 万が一開けない場合はVSCodeを開いてから、VSCode上で `javascript1.code-workspace` を開いてください。
 5. VSCodeのメニューバーの `ターミナル > 新しいターミナル` よりターミナルを開き、以下コマンドが正常に返却されるかを確認してください。
     1. 正常に動作しない場合はフォローします。
