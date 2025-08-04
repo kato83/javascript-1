@@ -27,10 +27,10 @@ v8 13.7.152.14-rusty
 typescript 5.8.3
 ```
 
-## ディレクトリ構成
+## ファイル構成
 
-|ディレクトリ|説明|
-|---|---|
+| ファイル | 説明 |
+| --- | --- |
 | `./.vscode/extensions.json` | VSCodeで使用する拡張機能を列挙したファイル|
 | `./.vscode/launch.json`  | VSCode起動時に自動で読み込むファイル |
 | `./.vscode/profile.ps1`  | PC上で `deno` コマンドを実行するためのセットアップファイル |
