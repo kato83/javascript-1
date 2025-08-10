@@ -1,4 +1,4 @@
-# merge-chain.ps1
+ï»¿# merge-chain.ps1
 [CmdletBinding()]
 param(
   [string]$Remote = "origin"
@@ -9,14 +9,14 @@ $ErrorActionPreference = 'Stop'
 function Info($msg) { Write-Host "[INFO] $msg" }
 function Die($msg)  { Write-Error $msg; exit 1 }
 
-# Git ƒŠƒ|ƒWƒgƒŠŠm”F
+# Git ãƒªãƒã‚¸ãƒˆãƒªç¢ºèª
 try {
   git rev-parse --git-dir *> $null
 } catch {
-  Die "Git ƒŠƒ|ƒWƒgƒŠ“à‚ÅÀs‚µ‚Ä‚­‚¾‚³‚¢B"
+  Die "Git ãƒªãƒã‚¸ãƒˆãƒªå†…ã§å®Ÿè¡Œã—ã¦ãã ã•ã„ã€‚"
 }
 
-# ì‹ÆƒcƒŠ[‚ªƒNƒŠ[ƒ“‚©Šm”Fi–¢’ÇÕ‚Í–³‹j
+# ä½œæ¥­ãƒ„ãƒªãƒ¼ãŒã‚¯ãƒªãƒ¼ãƒ³ã‹ç¢ºèªï¼ˆæœªè¿½è·¡ã¯ç„¡è¦–ï¼‰
 function IsTrackedClean {
   git diff --quiet
   $a = $LASTEXITCODE
@@ -26,17 +26,17 @@ function IsTrackedClean {
 }
 
 if (-not (IsTrackedClean)) {
-  Die "ì‹ÆƒcƒŠ[‚É–¢ƒRƒ~ƒbƒg‚Ì•ÏX‚ª‚ ‚è‚Ü‚·BƒRƒ~ƒbƒg or ƒXƒ^ƒbƒVƒ…‚µ‚Ä‚­‚¾‚³‚¢B"
+  Die "ä½œæ¥­ãƒ„ãƒªãƒ¼ã«æœªã‚³ãƒŸãƒƒãƒˆã®å¤‰æ›´ãŒã‚ã‚Šã¾ã™ã€‚ã‚³ãƒŸãƒƒãƒˆ or ã‚¹ã‚¿ãƒƒã‚·ãƒ¥ã—ã¦ãã ã•ã„ã€‚"
 }
 
-# Œ»İƒuƒ‰ƒ“ƒ`
+# ç¾åœ¨ãƒ–ãƒ©ãƒ³ãƒ
 $CurrentBranch = (git rev-parse --abbrev-ref HEAD).Trim()
-Info "Œ»İƒuƒ‰ƒ“ƒ`: $CurrentBranch"
+Info "ç¾åœ¨ãƒ–ãƒ©ãƒ³ãƒ: $CurrentBranch"
 
-# 01`13 ‚ÌŒó•â
+# 01ï½13 ã®å€™è£œ
 $candidates = 1..13 | ForEach-Object { '{0:00}' -f $_ }
 
-# ‘ÎÛƒuƒ‰ƒ“ƒ`Œˆ’è
+# å¯¾è±¡ãƒ–ãƒ©ãƒ³ãƒæ±ºå®š
 $targets = @()
 if ($CurrentBranch -eq 'main') {
   $targets = $candidates
@@ -46,22 +46,22 @@ if ($CurrentBranch -eq 'main') {
     $targets += ('{0:00}' -f $n)
   }
 } else {
-  Die "main ‚Ü‚½‚Í 01`13 ‚Ìƒuƒ‰ƒ“ƒ`ã‚ÅÀs‚µ‚Ä‚­‚¾‚³‚¢i¡‚Í: $CurrentBranchj"
+  Die "main ã¾ãŸã¯ 01ï½13 ã®ãƒ–ãƒ©ãƒ³ãƒä¸Šã§å®Ÿè¡Œã—ã¦ãã ã•ã„ï¼ˆä»Šã¯: $CurrentBranchï¼‰"
 }
 
 if ($targets.Count -eq 0) {
-  Info "Œã‘±‚Ì‘ÎÛƒuƒ‰ƒ“ƒ`‚ª‚ ‚è‚Ü‚¹‚ñBˆ—‚Ís‚¢‚Ü‚¹‚ñB"
+  Info "å¾Œç¶šã®å¯¾è±¡ãƒ–ãƒ©ãƒ³ãƒãŒã‚ã‚Šã¾ã›ã‚“ã€‚å‡¦ç†ã¯è¡Œã„ã¾ã›ã‚“ã€‚"
   exit 0
 }
 
 # fetch
-Info "ƒŠƒ‚[ƒg($Remote)‚©‚ç fetch ’†c"
+Info "ãƒªãƒ¢ãƒ¼ãƒˆ($Remote)ã‹ã‚‰ fetch ä¸­â€¦"
 git fetch --prune $Remote | Out-Null
 
 $sourceBranch = $CurrentBranch
 $origBranch   = $sourceBranch
 
-# ƒuƒ‰ƒ“ƒ`‘¶İŠm”FŠÖ”
+# ãƒ–ãƒ©ãƒ³ãƒå­˜åœ¨ç¢ºèªé–¢æ•°
 function RemoteRefExists($remote, $branch) {
   git show-ref --verify --quiet "refs/remotes/$remote/$branch"
   return ($LASTEXITCODE -eq 0)
@@ -72,51 +72,51 @@ function LocalRefExists($branch) {
 }
 
 try {
-  # Œ³ƒuƒ‰ƒ“ƒ`‚ğÅV‰»
+  # å…ƒãƒ–ãƒ©ãƒ³ãƒã‚’æœ€æ–°åŒ–
   if (RemoteRefExists $Remote $sourceBranch) {
-    Info "Œ³ƒuƒ‰ƒ“ƒ` $sourceBranch ‚ğ fast-forward pullc"
+    Info "å…ƒãƒ–ãƒ©ãƒ³ãƒ $sourceBranch ã‚’ fast-forward pullâ€¦"
     git checkout -q $sourceBranch | Out-Null
     git pull --ff-only $Remote $sourceBranch | Out-Null
   }
 
   foreach ($tgt in $targets) {
-    # ‘¶İƒ`ƒFƒbƒN
+    # å­˜åœ¨ãƒã‚§ãƒƒã‚¯
     $hasLocal  = LocalRefExists $tgt
     $hasRemote = RemoteRefExists $Remote $tgt
 
     if (-not $hasLocal -and -not $hasRemote) {
-      Info "ƒuƒ‰ƒ“ƒ` $tgt ‚ª‘¶İ‚µ‚È‚¢‚½‚ßƒXƒLƒbƒvB"
+      Info "ãƒ–ãƒ©ãƒ³ãƒ $tgt ãŒå­˜åœ¨ã—ãªã„ãŸã‚ã‚¹ã‚­ãƒƒãƒ—ã€‚"
       continue
     }
 
     if (-not $hasLocal -and $hasRemote) {
-      Info "ƒ[ƒJƒ‹‚É $tgt ‚ª–³‚¢‚Ì‚Åì¬i$Remote/$tgt ‚ğ’ÇÕj"
+      Info "ãƒ­ãƒ¼ã‚«ãƒ«ã« $tgt ãŒç„¡ã„ã®ã§ä½œæˆï¼ˆ$Remote/$tgt ã‚’è¿½è·¡ï¼‰"
       git checkout -q -t "$Remote/$tgt" | Out-Null
     }
 
-    Info "=== $tgt ‚ğXVŠJn ==="
+    Info "=== $tgt ã‚’æ›´æ–°é–‹å§‹ ==="
     git checkout -q $tgt | Out-Null
 
     if (RemoteRefExists $Remote $tgt) {
       git pull --ff-only $Remote $tgt | Out-Null
     }
 
-    Info "ƒ}[ƒW: $sourceBranch ¨ $tgt"
+    Info "ãƒãƒ¼ã‚¸: $sourceBranch â†’ $tgt"
     git merge --no-ff --no-edit $sourceBranch
 
     if ($LASTEXITCODE -ne 0) {
-      Write-Warning "ƒRƒ“ƒtƒŠƒNƒg‚ª”­¶‚µ‚Ü‚µ‚½i$sourceBranch ¨ $tgtjB"
-      Write-Host "‰ğÁŒã‚ÉŸ‚ğÀs‚µ‚Ä‚­‚¾‚³‚¢:`n  git add -A`n  git commit`n  git push $Remote $tgt"
+      Write-Warning "ã‚³ãƒ³ãƒ•ãƒªã‚¯ãƒˆãŒç™ºç”Ÿã—ã¾ã—ãŸï¼ˆ$sourceBranch â†’ $tgtï¼‰ã€‚"
+      Write-Host "è§£æ¶ˆå¾Œã«æ¬¡ã‚’å®Ÿè¡Œã—ã¦ãã ã•ã„:`n  git add -A`n  git commit`n  git push $Remote $tgt"
       exit 2
     }
 
     Info "push: $tgt"
     git push $Remote $tgt | Out-Null
-    Info "=== $tgt XVŠ®—¹ ==="
+    Info "=== $tgt æ›´æ–°å®Œäº† ==="
   }
 }
 finally {
   try { git checkout -q $origBranch | Out-Null } catch { }
 }
 
-Info "‚·‚×‚Ä‚Ì‘ÎÛƒuƒ‰ƒ“ƒ`‚ğXV‚µ‚Ü‚µ‚½B"
+Info "ã™ã¹ã¦ã®å¯¾è±¡ãƒ–ãƒ©ãƒ³ãƒã‚’æ›´æ–°ã—ã¾ã—ãŸã€‚"
