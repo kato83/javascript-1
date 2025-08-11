@@ -42,7 +42,7 @@ if ($CurrentBranch -eq 'main') {
   $targets = $candidates
 } elseif ($CurrentBranch -match '^(0[1-9]|1[0-3])$') {
   $curNum = [int]$CurrentBranch
-  foreach ($n in $curNum+1..13) {
+  foreach ($n in (($curNum + 1) .. 13)) {
     $targets += ('{0:00}' -f $n)
   }
 } else {
