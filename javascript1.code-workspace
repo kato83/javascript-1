@@ -25,6 +25,22 @@
 				]
 			}
 		},
+		"[javascript]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "denoland.vscode-deno"
+		},
+		"[typescript]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "denoland.vscode-deno"
+		},
+		"[json]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "denoland.vscode-deno"
+		},
+		"[jsonc]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "denoland.vscode-deno"
+		},
 		// "Deno portable" プロファイルでVSCodeを起動するようにする
 		// @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
 		"terminal.integrated.defaultProfile.windows": "Deno portable"
