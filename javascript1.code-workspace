@@ -1,48 +1,61 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		// Deno有効化
-		"deno.enable": true,
-		// VSCode上のDenoのオートコンプリートを tools/deno.exe を参照するようにする
-		"deno.path": ".\\tools\\deno.exe",
-		// VSCodeのターミナルで開いた際に tools/ にパスを通して
-		// ".\deno.exe [...command]" ではなく "deno [...command]" と実行できる
-		// VSCodeのプロファイル "Deno portable" を定義
-		// @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
-		"terminal.integrated.shellIntegration.enabled": true,
-		"terminal.integrated.profiles.windows": {
-			"Deno portable": {
-				"source": "PowerShell",
-				"icon": "terminal-powershell",
-				"args": [
-					"-NoExit",
-					"-Command",
-					"& { . \".\\.vscode\\profile.ps1\" }"
-				]
-			}
-		},
-		"[javascript]": {
-			"editor.formatOnSave": true,
-			"editor.defaultFormatter": "denoland.vscode-deno"
-		},
-		"[typescript]": {
-			"editor.formatOnSave": true,
-			"editor.defaultFormatter": "denoland.vscode-deno"
-		},
-		"[json]": {
-			"editor.formatOnSave": true,
-			"editor.defaultFormatter": "denoland.vscode-deno"
-		},
-		"[jsonc]": {
-			"editor.formatOnSave": true,
-			"editor.defaultFormatter": "denoland.vscode-deno"
-		},
-		// "Deno portable" プロファイルでVSCodeを起動するようにする
-		// @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
-		"terminal.integrated.defaultProfile.windows": "Deno portable"
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    // Deno有効化
+    "deno.enable": true,
+    // VSCode上のDenoのオートコンプリートを tools/deno.exe を参照するようにする
+    "deno.path": ".\\tools\\deno.exe",
+    // VSCodeのターミナルで開いた際に tools/ にパスを通して
+    // ".\deno.exe [...command]" ではなく "deno [...command]" と実行できる
+    // VSCodeのプロファイル "Deno portable" を定義
+    // @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.profiles.windows": {
+      "Deno portable": {
+        // Windows PowerShell だと *.ps1 の実行を禁止している環境だと動作しないのでコメントアウトしておく。
+        // ※上記を含む、特別な理由がない限り Windows PowerShell で良い。
+        // "source": "PowerShell",
+        // "icon": "terminal-powershell",
+        // "args": [
+        // 	"-NoExit",
+        // 	"-Command",
+        // 	"& { . \".\\.vscode\\profile.ps1\" }"
+        // ]
+        // 以下 Windows Command Prompt にて deno のパスを通すための対応
+        "path": "C:\\Windows\\System32\\cmd.exe",
+        "icon": "terminal-cmd",
+        "args": [
+          "/K",
+          ".\\.vscode\\profile.cmd"
+        ]
+      }
+    },
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "denoland.vscode-deno"
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "denoland.vscode-deno"
+    },
+    "[json]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "denoland.vscode-deno"
+    },
+    "[jsonc]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "denoland.vscode-deno"
+    },
+    // "Deno portable" プロファイルでVSCodeを起動するようにする
+    // @todo プロパティ名の通りwindowsのみなのでLinuxやMacにも対応したい
+    "terminal.integrated.defaultProfile.windows": "Deno portable",
+    // インデントを半角スペース2文字分のインデントサイズにする
+    "editor.tabSize": 2,
+    // タブキーによるインデントをスペースにする
+    "editor.insertSpaces": true
+  }
 }
