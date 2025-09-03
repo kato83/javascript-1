@@ -38,15 +38,13 @@ $candidates = 1..13 | ForEach-Object { '{0:00}' -f $_ }
 
 # 対象ブランチ決定
 $targets = @()
-if ($CurrentBranch -eq 'main') {
-  $targets = $candidates
-} elseif ($CurrentBranch -match '^(0[1-9]|1[0-3])$') {
+if ($CurrentBranch -match '^(0[1-9]|1[0-3])$') {
   $curNum = [int]$CurrentBranch
   foreach ($n in (($curNum + 1) .. 13)) {
     $targets += ('{0:00}' -f $n)
   }
 } else {
-  Die "main または 01～13 のブランチ上で実行してください（今は: $CurrentBranch）"
+  Die "01～13 のブランチ上で実行してください（今は: $CurrentBranch）"
 }
 
 if ($targets.Count -eq 0) {
