@@ -1,1 +1,0 @@
-console.log("閉じ忘れ
