@@ -16,16 +16,7 @@ score = 200; // 再代入OK
 // 2. const - 再代入不可能な定数を宣言
 const TAX = 0.10;
 // TAX = 0.10; // エラー: 再代入できない
-
-// 3. var - 古い宣言方法（非推奨）
-var name = "太郎";
 ```
-
-> [!IMPORTANT]
-> 現代のJavaScriptでは、`var`よりも`let`と`const`を使うことが推奨されています。
-> - `const`: 値が変わらないものに使用（デフォルトはこちら）
-> - `let`: 値が変わる可能性があるものに使用
-> - `var`: レガシーコードでのみ使用（新規コードでは使わない）
 
 ### 変数の命名規則
 
@@ -233,20 +224,18 @@ showLocal();
 // console.log(blockConst); // エラー: blockConstは定義されていない
 ```
 
-> [!WARNING]
-> `var`で宣言された変数はブロックスコープを持たず、関数スコープのみを持ちます：
-> 
-> ```js
-> {
->   var oldVar = "古い変数";
-> }
-> console.log(oldVar); // "古い変数" (ブロックの外でもアクセス可能)
-> 
-> function test() {
->   var funcVar = "関数内変数";
-> }
-> // console.log(funcVar); // エラー: funcVarは定義されていない
-> ```
+違和感のある構文ですが、実際には `if` や `for` `while` 今後紹介する `try` `catch` `finally` でも同じ事が言えます。
+
+```js
+if (true) {
+  let blockVar = "ブロック変数";
+  const blockConst = "ブロック定数";
+  console.log(blockVar);   // "ブロック変数"
+}
+
+// console.log(blockVar);   // エラー: blockVarは定義されていない
+// console.log(blockConst); // エラー: blockConstは定義されていない
+```
 
 ### スコープチェーン
 
@@ -278,21 +267,9 @@ console.log(outerVar);      // "外側の変数"
 // console.log(innerVar);   // エラー: innerVarは定義されていない
 ```
 
-## 変数の巻き上げ（Hoisting）
+## 変数の巻き上げ
 
-JavaScriptでは、変数宣言は実行前に「巻き上げ」られますが、初期化は巻き上げられません：
-
-```js
-console.log(hoistedVar); // undefined (エラーにならない)
-var hoistedVar = "巻き上げられた変数";
-
-// 上記のコードは内部的には以下のように解釈される
-// var hoistedVar;
-// console.log(hoistedVar);
-// hoistedVar = "巻き上げられた変数";
-```
-
-`let`と`const`も巻き上げられますが、初期化されるまでの「一時的なデッドゾーン（TDZ）」があります：
+JavaScriptでは、基本的に処理が上から下に実行されていくので、変数定義前に変数の値を参照するような処理はエラーになります。
 
 ```js
 // console.log(letVar); // エラー: letVarにアクセスする前に初期化する必要がある
@@ -316,7 +293,7 @@ let letVar = "let変数";
 1. グローバルスコープに変数を宣言する
 2. 関数内でローカル変数を宣言し、グローバル変数とローカル変数の両方を出力する
 3. ブロックスコープ内で変数を宣言し、ブロック内と外でのアクセスを試みる
-4. `var`と`let`の違いを示すコード例を書く
+4. `const`と`let`の違いを示すコード例を書く
 
 ### 課題3: 型変換の実験
 
@@ -328,7 +305,7 @@ let letVar = "let変数";
 
 ## まとめ
 
-- 変数は`let`、`const`、`var`で宣言でき、現代のJavaScriptでは`let`と`const`が推奨される
+- 変数は`let`、`const`で宣言することができる
 - JavaScriptには、プリミティブ型（数値、文字列、論理値など）と参照型（オブジェクト、配列、関数）がある
 - 変数のスコープには、グローバルスコープ、関数スコープ、ブロックスコープがある
 - JavaScriptでは型変換が自動的に行われることがあるが、明示的に型を変換することも可能
