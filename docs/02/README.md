@@ -1,3 +1,28 @@
+# DenoのREPLを試す
+
+**REPL**は**Read–Eval–Print Loop**の略で、一行ごとに入力を評価・実行して結果を即座に返す対話型実行環境のことです。  
+今後も授業では例となるコードを資料に記述しているので、簡単なコードであればJSファイルを作らずとも実際にどのような挙動となるかをコードを書いて確認できるのと共に、記憶の定着につながります。
+
+**REPL**は `deno` コマンド（オプション無し）で開始することができ `Ctrl + C & Ctrl + C` で終了することが出来ます。 
+
+```
+>deno
+Deno 2.5.3
+exit using ctrl+d, ctrl+c, or close()
+REPL is running with all permissions allowed.
+To specify permissions, run `deno repl` with allow flags.
+> let foo = 'Hello world!';
+undefined
+> console.log(foo);
+Hello world!
+undefined
+>
+press ctrl+c again to exit
+>
+
+>
+```
+
 # JavaScript 変数とデータ型
 
 ## 変数とは
