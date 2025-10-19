@@ -54,6 +54,10 @@ JavaScriptには、以下の主要なデータ型があります：
 
 ### プリミティブ型（基本型）
 
+> [!TIP]
+> プロミティブについてより詳しく知りたい場合の参考  
+> [Primitive (プリミティブ) - MDN Web Docs 用語集 | MDN](https://developer.mozilla.org/ja/docs/Glossary/Primitive)
+
 1. **数値型（Number）**
    - 整数と小数を表現
    ```js
@@ -168,6 +172,7 @@ let num3 = parseFloat("42.5"); // 42.5 (小数)
 let num = 42;
 let str1 = String(num);    // "42"
 let str2 = num.toString(); // "42"
+let str3 = '' + num;       // "42"
 
 // 他の型→論理値
 let bool1 = Boolean(1);    // true
