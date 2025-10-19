@@ -1,3 +1,28 @@
+# DenoのREPLを試す
+
+**REPL**は**Read–Eval–Print Loop**の略で、一行ごとに入力を評価・実行して結果を即座に返す対話型実行環境のことです。  
+今後も授業では例となるコードを資料に記述しているので、簡単なコードであればJSファイルを作らずとも実際にどのような挙動となるかをコードを書いて確認できるのと共に、記憶の定着につながります。
+
+**REPL**は `deno` コマンド（オプション無し）で開始することができ `Ctrl + C & Ctrl + C` で終了することが出来ます。 
+
+```
+>deno
+Deno 2.5.3
+exit using ctrl+d, ctrl+c, or close()
+REPL is running with all permissions allowed.
+To specify permissions, run `deno repl` with allow flags.
+> let foo = 'Hello world!';
+undefined
+> console.log(foo);
+Hello world!
+undefined
+>
+press ctrl+c again to exit
+>
+
+>
+```
+
 # JavaScript 変数とデータ型
 
 ## 変数とは
@@ -53,6 +78,10 @@ JavaScriptでは一般的に以下の命名規則が使われます：
 JavaScriptには、以下の主要なデータ型があります：
 
 ### プリミティブ型（基本型）
+
+> [!TIP]
+> プロミティブについてより詳しく知りたい場合の参考  
+> [Primitive (プリミティブ) - MDN Web Docs 用語集 | MDN](https://developer.mozilla.org/ja/docs/Glossary/Primitive)
 
 1. **数値型（Number）**
    - 整数と小数を表現
@@ -168,6 +197,7 @@ let num3 = parseFloat("42.5"); // 42.5 (小数)
 let num = 42;
 let str1 = String(num);    // "42"
 let str2 = num.toString(); // "42"
+let str3 = '' + num;       // "42"
 
 // 他の型→論理値
 let bool1 = Boolean(1);    // true
