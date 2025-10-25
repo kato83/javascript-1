@@ -45,6 +45,14 @@ for (初期化; 条件式; 更新式) {
 - **条件式**: 各繰り返しの前に評価され、`true`の場合にループ本体が実行される
 - **更新式**: 各繰り返しの後に実行される（通常はカウンタ変数の更新）
 
+> [!NOTE]
+> 前回（03）で学んだDenoのREPLモードを起動して、以下のコードを用いて動作を確認してみよう。
+> ```js
+> for (let i = 0; console.log('条件式', i < 10) || i < 10; console.log('更新式', i++)) {
+>   console.log('繰り返し実行する処理 i =', i);
+> }
+> ```
+
 > [!TIP]
 > プログラムにおける**式**ってなにもの？
 > 参考: [式と演算子 - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Expressions_and_operators)
