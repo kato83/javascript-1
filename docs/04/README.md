@@ -24,7 +24,8 @@ JavaScriptには、主に3つの基本的な繰り返し構文があります：
 `for`文は、最も一般的な繰り返し構文で、特に回数が決まっている場合に使用します。
 
 > [!TIP]
-> VSCodeでは `for` と入力してTabキーを押すと、for文の基本的な構文が自動的に挿入されます。
+> VSCodeでは `for` と入力してサジェスト（候補）内の `For Loop` を選択（Tabキー押下又はクリック）すると、for文の基本的な構文が自動的に挿入されます。
+> ![](./_img/01.png)
 > ```js
 > for (let index = 0; index < array.length; index++) {
 >     const element = array[index];
@@ -111,7 +112,8 @@ for (let i = 0; ; i++) {
 `while`文は、条件が真である限り処理を繰り返します。繰り返し回数が事前に分からない場合に適しています。
 
 > [!TIP]
-> VSCodeでは `while` と入力してTabキーを押すと、while文の基本的な構文が自動的に挿入されます。
+> VSCodeでは `while` と入力してサジェスト（候補）内の `While Statement` を選択（Tabキー押下又はクリック）すると、while文の基本的な構文が自動的に挿入されます。
+> ![](./_img/02.png)
 > ```js
 > while (condition) {
 >     
@@ -152,7 +154,8 @@ while (answer !== "yes") {
 `do-while`文は、`while`文と似ていますが、条件チェックが処理の後に行われるため、最低1回は処理が実行されます。
 
 > [!TIP]
-> VSCodeでは `dowhile` と入力してTabキーを押すと、do-while文の基本的な構文が自動的に挿入されます。
+> VSCodeでは `dowhile` と入力してサジェスト（候補）内の `Do-While Statement` を選択（Tabキー押下又はクリック）すると、do-while文の基本的な構文が自動的に挿入されます。
+> ![](./_img/03.png)
 > ```js
 > do {
 >     
@@ -272,7 +275,8 @@ for (let i = 0; i < fruits.length; i++) {
 ES6（ECMAScript 2015）から導入された`for...of`文は、配列や他の反復可能なオブジェクトの要素を簡単に繰り返し処理できます。
 
 > [!TIP]
-> VSCodeでは `forof` と入力してTabキーを押すと、for...of文の基本的な構文が自動的に挿入されます。
+> VSCodeでは `forof` と入力してサジェスト（候補）内の `For-Of Loop` を選択（Tabキー押下又はクリック）すると、for...of文の基本的な構文が自動的に挿入されます。
+> ![](./_img/04.png)
 > ```js
 > for (const iterator of object) {
 >     
