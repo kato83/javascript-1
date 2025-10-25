@@ -23,6 +23,15 @@ JavaScriptには、主に3つの基本的な繰り返し構文があります：
 
 `for`文は、最も一般的な繰り返し構文で、特に回数が決まっている場合に使用します。
 
+> [!TIP]
+> VSCodeでは `for` と入力してTabキーを押すと、for文の基本的な構文が自動的に挿入されます。
+> ```js
+> for (let index = 0; index < array.length; index++) {
+>     const element = array[index];
+>     
+> }
+> ```
+
 #### 基本的なfor文の構文
 
 ```js
@@ -101,6 +110,14 @@ for (let i = 0; ; i++) {
 
 `while`文は、条件が真である限り処理を繰り返します。繰り返し回数が事前に分からない場合に適しています。
 
+> [!TIP]
+> VSCodeでは `while` と入力してTabキーを押すと、while文の基本的な構文が自動的に挿入されます。
+> ```js
+> while (condition) {
+>     
+> }
+> ```
+
 #### 基本的なwhile文の構文
 
 ```js
@@ -133,6 +150,14 @@ while (answer !== "yes") {
 ### do-while文
 
 `do-while`文は、`while`文と似ていますが、条件チェックが処理の後に行われるため、最低1回は処理が実行されます。
+
+> [!TIP]
+> VSCodeでは `dowhile` と入力してTabキーを押すと、do-while文の基本的な構文が自動的に挿入されます。
+> ```js
+> do {
+>     
+> } while (condition);
+> ```
 
 #### 基本的なdo-while文の構文
 
@@ -245,6 +270,14 @@ for (let i = 0; i < fruits.length; i++) {
 ### for...of文
 
 ES6（ECMAScript 2015）から導入された`for...of`文は、配列や他の反復可能なオブジェクトの要素を簡単に繰り返し処理できます。
+
+> [!TIP]
+> VSCodeでは `forof` と入力してTabキーを押すと、for...of文の基本的な構文が自動的に挿入されます。
+> ```js
+> for (const iterator of object) {
+>     
+> }
+> ```
 
 ```js
 const fruits = ["りんご", "バナナ", "オレンジ", "ぶどう", "メロン"];
