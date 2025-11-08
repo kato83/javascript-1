@@ -10,6 +10,131 @@
 
 プログラミングでも同様に、関連する処理をまとめて関数として定義することで、コードを整理し、再利用可能にすることができます。
 
+## なぜ関数が必要なのか
+
+JavaScriptでは、基本的にプログラムは**上から下へ順番に実行**されます。この特性を踏まえて、関数を使う場合と使わない場合の違いを見てみましょう。
+
+### 関数を使わない場合の問題点
+
+まず、関数を使わずに同じ処理を繰り返し書いた例を見てみましょう：
+
+```js
+// 関数を使わない場合：同じ処理を何度も書く必要がある
+console.log("=== 商品A の税込価格計算 ===");
+let priceA = 1000;
+let taxRate = 0.1;
+let taxAmountA = priceA * taxRate;
+let totalPriceA = priceA + taxAmountA;
+console.log(`商品A: ${priceA}円 + 税${taxAmountA}円 = ${totalPriceA}円`);
+
+console.log("=== 商品B の税込価格計算 ===");
+let priceB = 2500;
+// taxRate = 0.1; // 同じ税率だが再度定義が必要
+let taxAmountB = priceB * taxRate;
+let totalPriceB = priceB + taxAmountB;
+console.log(`商品B: ${priceB}円 + 税${taxAmountB}円 = ${totalPriceB}円`);
+
+console.log("=== 商品C の税込価格計算 ===");
+let priceC = 800;
+// taxRate = 0.1; // また同じ処理
+let taxAmountC = priceC * taxRate;
+let totalPriceC = priceC + taxAmountC;
+console.log(`商品C: ${priceC}円 + 税${taxAmountC}円 = ${totalPriceC}円`);
+```
+
+この方法では以下の問題があります：
+
+1. **同じコードの重複**: 税込価格を計算する処理が3回も書かれている
+2. **修正が大変**: 税率が変更になった場合、すべての箇所を修正する必要がある
+3. **コードが長くなる**: 処理が増えるほどコードが読みにくくなる
+4. **ミスが起きやすい**: 同じ処理を何度も書くため、タイプミスや計算ミスが発生しやすい
+
+### 関数を使った場合の改善
+
+同じ処理を関数として定義すると、以下のように改善されます：
+
+```js
+// 関数を使った場合：処理をまとめて再利用可能にする
+function calculateTaxIncludedPrice(price) {
+  const taxRate = 0.1;
+  const taxAmount = price * taxRate;
+  const totalPrice = price + taxAmount;
+  
+  console.log(`価格: ${price}円 + 税${taxAmount}円 = ${totalPrice}円`);
+  return totalPrice;
+}
+
+// 関数を呼び出すだけで同じ処理を実行できる
+console.log("=== 商品A の税込価格計算 ===");
+const totalA = calculateTaxIncludedPrice(1000);
+
+console.log("=== 商品B の税込価格計算 ===");
+const totalB = calculateTaxIncludedPrice(2500);
+
+console.log("=== 商品C の税込価格計算 ===");
+const totalC = calculateTaxIncludedPrice(800);
+
+// 合計金額も簡単に計算できる
+const grandTotal = totalA + totalB + totalC;
+console.log(`合計: ${grandTotal}円`);
+```
+
+### 関数使用のメリット・デメリット
+
+#### ✅ **メリット**
+
+1. **コードの重複を削減**: 同じ処理を一度だけ書けば良い
+2. **保守性の向上**: 修正が必要な場合、関数の定義部分だけを変更すれば全体に反映される
+3. **可読性の向上**: 処理に名前を付けることで、何をしているかが分かりやすくなる
+4. **再利用性**: 一度定義した関数は、プログラムの任意の場所で何度でも使える
+5. **テストしやすさ**: 個別の機能をテストしやすくなる
+6. **分業しやすさ**: 機能ごとに分割することで、複数人での開発がしやすくなる
+
+#### ❌ **デメリット**
+
+1. **設計の複雑さ**: どのような関数に分割するかを考える必要がある
+2. **わずかなオーバーヘッド**: 関数呼び出しには微小な処理時間がかかる（通常は無視できるレベル）
+
+### 実際の開発での重要性
+
+実際のWebアプリケーション開発では、以下のような場面で関数が不可欠です：
+
+```js
+// ユーザー入力の検証
+function validateEmail(email) {
+  // メールアドレスの形式をチェック
+  return email.includes("@") && email.includes(".");
+}
+
+// データの変換
+function formatDate(date) {
+  // 日付を見やすい形式に変換
+  return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+}
+
+// 計算処理
+function calculateDiscount(price, discountRate) {
+  // 割引価格を計算
+  return price * (1 - discountRate);
+}
+
+// これらの関数を組み合わせて使用
+const userEmail = "user@example.com";
+const orderDate = new Date();
+const originalPrice = 5000;
+const discount = 0.2;
+
+if (validateEmail(userEmail)) {
+  const formattedDate = formatDate(orderDate);
+  const finalPrice = calculateDiscount(originalPrice, discount);
+  
+  console.log(`注文日: ${formattedDate}`);
+  console.log(`割引後価格: ${finalPrice}円`);
+}
+```
+
+このように、関数を使うことで**複雑な処理を小さな部品に分割**し、それらを組み合わせて大きなプログラムを構築することができます。これは、JavaScriptが上から下へ順次実行される特性を活かしながら、効率的で保守しやすいコードを書くための重要な技術です。
+
 ## 関数の基本概念
 
 ### 関数の利点
@@ -524,17 +649,17 @@ console.log(applyFunction(myFunction, 5));     // 10
 console.log(applyFunction(functions[0], 5));   // 6
 ```
 
-### 即座に実行される関数式（IIFE）
+### 即座に実行される関数式（即時関数）
 
 定義と同時に実行される関数です。
 
 ```js
-// IIFE（Immediately Invoked Function Expression）
+// 即時関数
 (function() {
   console.log("この関数は定義と同時に実行されます");
 })();
 
-// アロー関数でのIIFE
+// アロー関数での即時関数
 (() => {
   console.log("アロー関数でも同様に実行できます");
 })();
@@ -543,6 +668,146 @@ console.log(applyFunction(functions[0], 5));   // 6
 ((name) => {
   console.log(`こんにちは、${name}さん！`);
 })("太郎");
+```
+
+### コールバック関数
+
+**コールバック関数**とは、他の関数の引数として渡される関数のことです。コールバック関数は、特定のタイミングで呼び出されることで、処理の流れを制御することができます。
+
+> [!NOTE]
+> コールバック関数は非同期処理やイベント処理で重要な概念ですが、ここでは基本的な使い方を紹介します。詳細な非同期処理は今後の授業で扱います。
+
+#### 基本的なコールバック関数
+
+```js
+// コールバック関数を受け取る関数
+function processArray(array, callback) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    // 各要素に対してコールバック関数を実行
+    result.push(callback(array[i]));
+  }
+  return result;
+}
+
+// コールバック関数として使用する関数
+function double(x) {
+  return x * 2;
+}
+
+function square(x) {
+  return x * x;
+}
+
+// 使用例
+const numbers = [1, 2, 3, 4, 5];
+const doubled = processArray(numbers, double);
+const squared = processArray(numbers, square);
+
+console.log(doubled);  // [2, 4, 6, 8, 10]
+console.log(squared);  // [1, 4, 9, 16, 25]
+```
+
+#### 無名関数をコールバックとして使用
+
+```js
+// 無名関数をコールバックとして直接渡す
+const numbers = [1, 2, 3, 4, 5];
+
+const tripled = processArray(numbers, function(x) {
+  return x * 3;
+});
+
+// アロー関数をコールバックとして使用
+const halved = processArray(numbers, x => x / 2);
+
+console.log(tripled);  // [3, 6, 9, 12, 15]
+console.log(halved);   // [0.5, 1, 1.5, 2, 2.5]
+```
+
+#### 実用的なコールバック関数の例
+
+> [!NOTE]
+> 以下の例は実際にDenoで動作するコードです。ファイルアクセスには`--allow-read`フラグが必要です。
+> ```
+> > deno run --allow-read docs\05\work\sample.js
+> ```
+
+```js
+// ファイルやディレクトリを読み取るDeno組み込みのモジュール（Node.JS互換）をインポート
+import * as fs from "node:fs";
+// パス文字列を分解したり組み立てるDeno組み込みのモジュール（Node.JS互換）をインポート
+import * as path from "node:path";
+
+// ファイルの読み取り
+fs.readFile(
+  // 第一引数 どのファイルを読み取るか
+  path.join("docs", "05", "work", "sample.txt"),
+  // 第二引数 どのように読み取るか（UTF-8のテキストファイルとして読み取る）
+  "utf-8",
+  // 第三引数 読み取れた又はエラーがあった際の処理を記述する
+  function (err, data) {
+    if (err) {
+      console.error("エラーが発生しました エラー内容:", err);
+    } else {
+      console.log("▼▼▼ファイル読み取り成功しました▼▼▼");
+      console.log(data);
+    }
+  },
+);
+```
+
+#### 配列の組み込みメソッドでのコールバック
+
+JavaScriptの配列には、コールバック関数を使用するメソッドが多数あります。
+
+> [!NOTE]
+> 配列の詳細はシラバス08で学習しますが、ここではコールバック関数の理解のために基本的な例を紹介します。
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+
+// forEach: 各要素に対して処理を実行
+numbers.forEach(function(num) {
+  console.log(num * 2);
+});
+
+// map: 各要素を変換して新しい配列を作成
+const doubled = numbers.map(num => num * 2);
+console.log(doubled);  // [2, 4, 6, 8, 10]
+
+// filter: 条件に合う要素のみを抽出
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers);  // [2, 4]
+
+// find: 条件に合う最初の要素を取得
+const firstEven = numbers.find(num => num % 2 === 0);
+console.log(firstEven);  // 2
+```
+
+#### setTimeout でのコールバック
+
+時間を指定して処理を実行する`setTimeout`もコールバック関数を使用します。
+
+```js
+// 指定した時間後にコールバック関数を実行
+function delayedMessage(message, delay) {
+  console.log('処理開始...');
+  
+  setTimeout(function() {
+    console.log(message);
+  }, delay);
+  
+  console.log('処理継続中...');
+}
+
+// 使用例
+delayedMessage('3秒後に表示されるメッセージ', 3000);
+
+// アロー関数での書き方
+setTimeout(() => {
+  console.log('1秒後に表示されます');
+}, 1000);
 ```
 
 ## 実習課題
@@ -593,7 +858,19 @@ console.log(applyFunction(functions[0], 5));   // 6
    - 最小値と最大値を引数として受け取り、その範囲のランダムな整数を返す関数`getRandomInt`
 3. 上記の関数を使って、様々なテストケースで動作を確認する
 
-### 課題5: 実用的な関数
+### 課題5: コールバック関数の活用
+
+`docs/05/work/callback-functions.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
+
+1. 配列と処理関数（コールバック）を引数として受け取り、配列の各要素に処理を適用する関数`processNumbers`を定義する
+2. 以下のコールバック関数を作成する：
+   - `addTen`: 数値に10を加える関数
+   - `multiplyByTwo`: 数値を2倍にする関数
+   - `isEven`: 数値が偶数かどうかを判定する関数
+3. `processNumbers`関数を使って、数値配列`[1, 2, 3, 4, 5]`に対して上記の処理を適用し、結果を表示する
+4. 無名関数やアロー関数をコールバックとして使用する例も作成する
+
+### 課題6: 実用的な関数
 
 `docs/05/work/practical-functions.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
 
