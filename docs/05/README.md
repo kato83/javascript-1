@@ -1,0 +1,623 @@
+# JavaScript 関数定義、引数と戻り値、メソッド
+
+## 関数とは
+
+**関数**とは、特定の処理をまとめて名前を付けたもので、必要な時に何度でも呼び出して使うことができる仕組みです。関数を使うことで、同じ処理を何度も書く必要がなくなり、コードがより読みやすく、保守しやすくなります。
+
+日常生活でも私たちは関数のような考え方を使っています：
+- 「料理を作る」という処理には、材料を準備し、調理し、盛り付けるという一連の手順が含まれている
+- 「計算機で足し算をする」という処理には、数値を入力し、計算し、結果を表示するという手順が含まれている
+
+プログラミングでも同様に、関連する処理をまとめて関数として定義することで、コードを整理し、再利用可能にすることができます。
+
+## 関数の基本概念
+
+### 関数の利点
+
+1. **再利用性**: 一度定義した関数は何度でも使える
+2. **可読性**: 処理に名前を付けることで、コードが読みやすくなる
+3. **保守性**: 修正が必要な場合、関数の定義部分だけを変更すれば良い
+4. **モジュール化**: 複雑な処理を小さな単位に分割できる
+
+### 関数の構成要素
+
+- **関数名**: 関数を識別するための名前
+- **引数（パラメータ）**: 関数に渡すデータ
+- **処理内容**: 関数が実行する処理
+- **戻り値（返り値）**: 関数が処理結果として返すデータ
+
+## 関数の定義方法
+
+JavaScriptでは、主に3つの方法で関数を定義できます。
+
+### 1. 関数宣言（Function Declaration）
+
+最も基本的な関数の定義方法です。
+
+```js
+function 関数名(引数1, 引数2, ...) {
+  // 処理内容
+  return 戻り値; // 省略可能
+}
+```
+
+#### 基本的な関数宣言の例
+
+```js
+// 引数なし、戻り値なしの関数
+function greet() {
+  console.log("こんにちは！");
+}
+
+// 引数あり、戻り値ありの関数
+function add(a, b) {
+  return a + b;
+}
+
+// 関数の呼び出し
+greet();              // "こんにちは！"
+const result = add(5, 3);
+console.log(result);  // 8
+```
+
+### 2. 関数式（Function Expression）
+
+関数を変数に代入する方法です。
+
+```js
+const 関数名 = function(引数1, 引数2, ...) {
+  // 処理内容
+  return 戻り値; // 省略可能
+};
+```
+
+#### 関数式の例
+
+```js
+// 関数式で関数を定義
+const multiply = function(a, b) {
+  return a * b;
+};
+
+// 関数の呼び出し
+const result = multiply(4, 5);
+console.log(result);  // 20
+```
+
+### 3. アロー関数（Arrow Function）
+
+ES6（ECMAScript 2015）から導入された、より簡潔な関数の書き方です。
+
+```js
+const 関数名 = (引数1, 引数2, ...) => {
+  // 処理内容
+  return 戻り値; // 省略可能
+};
+```
+
+#### アロー関数の例
+
+```js
+// 基本的なアロー関数
+const subtract = (a, b) => {
+  return a - b;
+};
+
+// 処理が1行の場合、{}とreturnを省略可能
+const divide = (a, b) => a / b;
+
+// 引数が1つの場合、()を省略可能
+const square = x => x * x;
+
+// 引数がない場合、()は必須
+const getCurrentTime = () => new Date();
+
+// 関数の呼び出し
+console.log(subtract(10, 3));  // 7
+console.log(divide(15, 3));    // 5
+console.log(square(4));        // 16
+console.log(getCurrentTime()); // 現在の日時
+```
+
+> [!NOTE]
+> アロー関数は関数宣言や関数式と比べて、いくつかの違いがあります。基本的な使い方では大きな違いはありませんが、より高度な機能を使う際に重要になります。詳細は今後の授業で扱います。
+
+## 引数（パラメータ）
+
+**引数**とは、関数に渡すデータのことです。関数は引数を受け取って処理を行い、結果を返すことができます。
+
+### 基本的な引数の使用
+
+```js
+// 2つの引数を受け取る関数
+function introduce(name, age) {
+  console.log(`私の名前は${name}で、${age}歳です。`);
+}
+
+// 関数の呼び出し
+introduce("山田太郎", 25);  // "私の名前は山田太郎で、25歳です。"
+introduce("佐藤花子", 30);  // "私の名前は佐藤花子で、30歳です。"
+```
+
+### 引数の数が一致しない場合
+
+JavaScriptでは、引数の数が定義と一致しなくてもエラーになりません。
+
+```js
+function showInfo(name, age, city) {
+  console.log(`名前: ${name}`);
+  console.log(`年齢: ${age}`);
+  console.log(`都市: ${city}`);
+}
+
+// 引数が足りない場合（undefinedになる）
+showInfo("田中", 28);
+// 出力:
+// 名前: 田中
+// 年齢: 28
+// 都市: undefined
+
+// 引数が多い場合（余分な引数は無視される）
+showInfo("鈴木", 35, "東京", "会社員");
+// 出力:
+// 名前: 鈴木
+// 年齢: 35
+// 都市: 東京
+```
+
+### デフォルト引数
+
+引数にデフォルト値を設定することで、引数が渡されなかった場合の初期値を指定できます。
+
+```js
+// デフォルト引数を使用
+function greetWithDefault(name = "ゲスト", greeting = "こんにちは") {
+  console.log(`${greeting}、${name}さん！`);
+}
+
+// 様々な呼び出し方
+greetWithDefault();                    // "こんにちは、ゲストさん！"
+greetWithDefault("山田");              // "こんにちは、山田さん！"
+greetWithDefault("佐藤", "おはよう");  // "おはよう、佐藤さん！"
+```
+
+### 可変長引数（Rest Parameters）
+
+`...`を使用することで、任意の数の引数を配列として受け取ることができます。
+
+> [!NOTE]
+> 配列の詳細はシラバス08で学習しますが、ここでは関数との組み合わせの基本を紹介します。
+
+```js
+// 可変長引数を使用
+function sum(...numbers) {
+  let total = 0;
+  for (const num of numbers) {
+    total += num;
+  }
+  return total;
+}
+
+// 様々な数の引数で呼び出し
+console.log(sum(1, 2, 3));           // 6
+console.log(sum(1, 2, 3, 4, 5));     // 15
+console.log(sum(10, 20));            // 30
+console.log(sum());                  // 0
+```
+
+## 戻り値（返り値）
+
+**戻り値**とは、関数が処理の結果として呼び出し元に返すデータのことです。`return`文を使用して戻り値を指定します。
+
+### 基本的な戻り値の使用
+
+```js
+// 戻り値がある関数
+function calculateArea(width, height) {
+  const area = width * height;
+  return area;  // 計算結果を返す
+}
+
+// 戻り値を変数に代入
+const roomArea = calculateArea(5, 4);
+console.log(`部屋の面積: ${roomArea}平方メートル`);  // "部屋の面積: 20平方メートル"
+
+// 戻り値を直接使用
+console.log(`庭の面積: ${calculateArea(3, 6)}平方メートル`);  // "庭の面積: 18平方メートル"
+```
+
+### return文の動作
+
+`return`文が実行されると、関数の処理はその時点で終了し、指定した値が返されます。
+
+```js
+function checkAge(age) {
+  if (age < 0) {
+    return "年齢は0以上である必要があります";  // ここで関数終了
+  }
+  
+  if (age < 20) {
+    return "未成年です";  // ここで関数終了
+  }
+  
+  return "成人です";  // ここで関数終了
+}
+
+console.log(checkAge(-5));  // "年齢は0以上である必要があります"
+console.log(checkAge(15));  // "未成年です"
+console.log(checkAge(25));  // "成人です"
+```
+
+### 戻り値がない場合
+
+`return`文を書かない、または`return;`だけを書いた場合、関数は`undefined`を返します。
+
+```js
+// 戻り値を明示的に指定しない関数
+function printMessage(message) {
+  console.log(message);
+  // return文なし
+}
+
+const result = printMessage("テストメッセージ");
+console.log(result);  // undefined
+
+// 明示的にundefinedを返す
+function doSomething() {
+  console.log("何かの処理");
+  return;  // undefinedを返す
+}
+```
+
+### 複数の値を返す
+
+JavaScriptでは、配列やオブジェクトを使用して複数の値を返すことができます。
+
+```js
+// 配列で複数の値を返す
+function getNameAndAge() {
+  return ["山田太郎", 25];
+}
+
+const [name, age] = getNameAndAge();  // 分割代入
+console.log(`名前: ${name}, 年齢: ${age}`);
+
+// オブジェクトで複数の値を返す
+function getUserInfo() {
+  return {
+    name: "佐藤花子",
+    age: 30,
+    city: "東京"
+  };
+}
+
+const user = getUserInfo();
+console.log(`${user.name}さんは${user.city}在住の${user.age}歳です`);
+```
+
+## 関数のスコープ
+
+関数内で宣言された変数は、その関数内でのみアクセス可能です（ローカルスコープ）。
+
+```js
+let globalVar = "グローバル変数";
+
+function testScope() {
+  let localVar = "ローカル変数";
+  
+  console.log(globalVar);  // "グローバル変数" - アクセス可能
+  console.log(localVar);   // "ローカル変数" - アクセス可能
+}
+
+testScope();
+console.log(globalVar);    // "グローバル変数" - アクセス可能
+// console.log(localVar);  // エラー: localVarは定義されていない
+```
+
+### 引数もローカルスコープ
+
+関数の引数も、その関数内でのみアクセス可能なローカル変数として扱われます。
+
+```js
+function processData(data) {
+  // dataは関数内でのみアクセス可能
+  const processedData = data.toUpperCase();
+  return processedData;
+}
+
+const input = "hello world";
+const output = processData(input);
+console.log(output);  // "HELLO WORLD"
+// console.log(data);  // エラー: dataは定義されていない
+```
+
+## 組み込み関数とメソッド
+
+JavaScriptには、様々なデータ型に対して事前に定義された関数やメソッドがあります。これらを活用することで、効率的にプログラムを作成できます。
+
+### グローバル関数
+
+JavaScriptには、どこからでも呼び出せるグローバル関数があります。
+
+```js
+// 型変換関数
+console.log(Number("123"));         // 123 - 文字列を数値に変換
+console.log(String(456));           // "456" - 数値を文字列に変換
+console.log(Boolean(1));            // true - 値を論理値に変換
+console.log(Boolean(0));            // false
+
+// 数値解析関数
+console.log(parseInt("123.45"));    // 123 - 整数部分のみ取得
+console.log(parseFloat("123.45"));  // 123.45 - 小数を含む数値に変換
+console.log(parseInt("123abc"));    // 123 - 数値部分のみ解析
+console.log(parseInt("abc123"));    // NaN - 先頭が数値でない場合
+
+// 数値チェック関数
+console.log(isNaN("abc"));          // true - 数値でない場合
+console.log(isNaN("123"));          // false - 数値の場合
+console.log(isFinite(123));         // true - 有限数の場合
+console.log(isFinite(Infinity));    // false - 無限大の場合
+```
+
+### 文字列のメソッド
+
+文字列には多くの便利なメソッドが用意されています。
+
+```js
+const text = "Hello World JavaScript";
+
+// 基本的な情報取得
+console.log(text.length);           // 23 - 文字列の長さ
+console.log(text.charAt(0));        // "H" - 指定位置の文字を取得
+console.log(text.charAt(6));        // "W" - 6番目の文字
+
+// 大文字・小文字変換
+console.log(text.toUpperCase());    // "HELLO WORLD JAVASCRIPT" - 大文字に変換
+console.log(text.toLowerCase());    // "hello world javascript" - 小文字に変換
+
+// 検索関連
+console.log(text.indexOf("World")); // 6 - 文字列の位置を検索（最初の出現位置）
+console.log(text.indexOf("world")); // -1 - 見つからない場合は-1
+console.log(text.lastIndexOf("a")); // 17 - 最後の出現位置
+console.log(text.includes("Java")); // true - 文字列が含まれているかチェック
+console.log(text.startsWith("Hello")); // true - 指定文字列で始まるかチェック
+console.log(text.endsWith("Script")); // true - 指定文字列で終わるかチェック
+
+// 文字列の切り出し
+console.log(text.slice(0, 5));      // "Hello" - 開始位置から終了位置まで
+console.log(text.slice(6, 11));     // "World" - 6番目から11番目まで
+console.log(text.slice(-10));       // "JavaScript" - 後ろから10文字
+console.log(text.substring(0, 5));  // "Hello" - sliceと似ているが負の値は0として扱う
+
+// 文字列の置換と分割
+console.log(text.replace("World", "Universe")); // "Hello Universe JavaScript"
+console.log(text.split(" "));       // ["Hello", "World", "JavaScript"] - 空白で分割
+console.log(text.split(""));        // 1文字ずつ分割して配列に
+
+// 空白の処理
+const textWithSpaces = "  Hello World  ";
+console.log(textWithSpaces.trim()); // "Hello World" - 前後の空白を削除
+console.log(textWithSpaces.trimStart()); // "Hello World  " - 前の空白のみ削除
+console.log(textWithSpaces.trimEnd());   // "  Hello World" - 後ろの空白のみ削除
+
+// 文字列の繰り返しと埋め込み
+console.log("abc".repeat(3));       // "abcabcabc" - 文字列を指定回数繰り返し
+console.log("5".padStart(3, "0"));  // "005" - 指定長になるまで前に文字を追加
+console.log("5".padEnd(3, "0"));    // "500" - 指定長になるまで後ろに文字を追加
+```
+
+### 数値のメソッドとMathオブジェクト
+
+数値の処理には、数値のメソッドとMathオブジェクトの関数を使用します。
+
+```js
+const num = 123.456789;
+
+// 数値のメソッド
+console.log(num.toString());        // "123.456789" - 文字列に変換
+console.log(num.toFixed(2));        // "123.46" - 小数点以下の桁数を指定
+console.log(num.toFixed(0));        // "123" - 整数部分のみ
+console.log(num.toPrecision(4));    // "123.5" - 有効桁数を指定
+console.log(num.toPrecision(2));    // "1.2e+2" - 指数表記になる場合もある
+
+// 進数変換
+const intNum = 255;
+console.log(intNum.toString(2));    // "11111111" - 2進数
+console.log(intNum.toString(8));    // "377" - 8進数
+console.log(intNum.toString(16));   // "ff" - 16進数
+
+// Mathオブジェクトの関数
+console.log(Math.round(num));       // 123 - 四捨五入
+console.log(Math.floor(num));       // 123 - 切り捨て（床関数）
+console.log(Math.ceil(num));        // 124 - 切り上げ（天井関数）
+console.log(Math.trunc(num));       // 123 - 小数部分を切り捨て
+
+// 最大値・最小値
+console.log(Math.max(1, 5, 3, 9, 2)); // 9 - 最大値
+console.log(Math.min(1, 5, 3, 9, 2)); // 1 - 最小値
+
+// 絶対値と符号
+console.log(Math.abs(-5));          // 5 - 絶対値
+console.log(Math.sign(-5));         // -1 - 符号（-1, 0, 1のいずれか）
+console.log(Math.sign(0));          // 0
+console.log(Math.sign(5));          // 1
+
+// 累乗と平方根
+console.log(Math.pow(2, 3));        // 8 - 2の3乗
+console.log(Math.sqrt(16));         // 4 - 平方根
+console.log(Math.cbrt(27));         // 3 - 立方根
+
+// 乱数生成
+console.log(Math.random());         // 0以上1未満のランダムな数値
+console.log(Math.floor(Math.random() * 10)); // 0から9までのランダムな整数
+console.log(Math.floor(Math.random() * 6) + 1); // 1から6までのランダムな整数（サイコロ）
+
+// 三角関数（ラジアン単位）
+console.log(Math.PI);               // 3.141592653589793 - 円周率
+console.log(Math.sin(Math.PI / 2)); // 1 - サイン（90度）
+console.log(Math.cos(0));           // 1 - コサイン（0度）
+console.log(Math.tan(Math.PI / 4)); // 1 - タンジェント（45度）
+
+// 対数と指数
+console.log(Math.log(Math.E));      // 1 - 自然対数
+console.log(Math.log10(100));       // 2 - 常用対数
+console.log(Math.exp(1));           // 2.718281828459045 - eの1乗
+```
+
+### 日付と時刻の基本操作
+
+JavaScriptには日付と時刻を扱うDateオブジェクトがあります。
+
+> [!NOTE]
+> 日付と時刻の詳細な操作はシラバス09で学習しますが、ここでは基本的な使い方を紹介します。
+
+```js
+// 現在の日時を取得
+const now = new Date();
+console.log(now);                   // 現在の日時
+
+// 特定の日時を作成
+const specificDate = new Date(2024, 0, 1); // 2024年1月1日（月は0から始まる）
+const dateFromString = new Date("2024-01-01");
+
+// 日時の各部分を取得
+console.log(now.getFullYear());     // 年
+console.log(now.getMonth());        // 月（0-11）
+console.log(now.getDate());         // 日
+console.log(now.getDay());          // 曜日（0:日曜日 - 6:土曜日）
+console.log(now.getHours());        // 時
+console.log(now.getMinutes());      // 分
+console.log(now.getSeconds());      // 秒
+
+// 文字列への変換
+console.log(now.toString());        // 標準的な文字列表現
+console.log(now.toDateString());    // 日付部分のみ
+console.log(now.toTimeString());    // 時刻部分のみ
+console.log(now.toISOString());     // ISO形式の文字列
+```
+
+## 関数の高度な概念
+
+### 関数も値である
+
+JavaScriptでは、関数も値として扱うことができます。変数に代入したり、他の関数の引数として渡したりできます。
+
+```js
+// 関数を変数に代入
+const myFunction = function(x) {
+  return x * 2;
+};
+
+// 関数を配列に格納
+const functions = [
+  function(x) { return x + 1; },
+  function(x) { return x * 2; },
+  function(x) { return x - 1; }
+];
+
+// 関数を引数として渡す（高階関数）
+function applyFunction(func, value) {
+  return func(value);
+}
+
+console.log(applyFunction(myFunction, 5));     // 10
+console.log(applyFunction(functions[0], 5));   // 6
+```
+
+### 即座に実行される関数式（IIFE）
+
+定義と同時に実行される関数です。
+
+```js
+// IIFE（Immediately Invoked Function Expression）
+(function() {
+  console.log("この関数は定義と同時に実行されます");
+})();
+
+// アロー関数でのIIFE
+(() => {
+  console.log("アロー関数でも同様に実行できます");
+})();
+
+// 引数を渡すことも可能
+((name) => {
+  console.log(`こんにちは、${name}さん！`);
+})("太郎");
+```
+
+## 実習課題
+
+### 課題1: 基本的な関数定義
+
+`docs/05/work/basic-functions.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
+
+1. 2つの数値を引数として受け取り、その合計を返す関数`add`を関数宣言で定義する
+2. 2つの数値を引数として受け取り、その差を返す関数`subtract`を関数式で定義する
+3. 2つの数値を引数として受け取り、その積を返す関数`multiply`をアロー関数で定義する
+4. 上記3つの関数を使って、以下の計算を行い結果を表示する：
+   - 10 + 5
+   - 10 - 5
+   - 10 × 5
+
+### 課題2: 引数とデフォルト値
+
+`docs/05/work/function-parameters.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
+
+1. 名前、年齢、職業を引数として受け取り、自己紹介文を返す関数`introduce`を定義する
+   - 年齢のデフォルト値は20、職業のデフォルト値は"学生"とする
+2. 任意の数の数値を引数として受け取り、その平均値を返す関数`average`を定義する（可変長引数を使用）
+3. 上記の関数を様々なパターンで呼び出して動作を確認する
+
+### 課題3: 戻り値の活用
+
+`docs/05/work/return-values.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
+
+1. 点数を引数として受け取り、以下の評価を返す関数`getGrade`を定義する：
+   - 90点以上: "A"
+   - 80点以上: "B"
+   - 70点以上: "C"
+   - 60点以上: "D"
+   - 60点未満: "F"
+2. 幅と高さを引数として受け取り、面積と周囲の長さをオブジェクトで返す関数`getRectangleInfo`を定義する
+3. 上記の関数を使って、複数のテストケースで動作を確認する
+
+### 課題4: 組み込み関数とメソッドの活用
+
+`docs/05/work/built-in-functions.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
+
+1. 文字列処理関数を作成する：
+   - 文字列を引数として受け取り、その文字列の文字数、大文字版、小文字版を返す関数`analyzeString`
+   - 文字列と検索文字を引数として受け取り、検索文字が何回出現するかを返す関数`countCharacter`
+2. 数値処理関数を作成する：
+   - 数値を引数として受け取り、その数値を四捨五入、切り上げ、切り捨てした結果を返す関数`roundNumbers`
+   - 最小値と最大値を引数として受け取り、その範囲のランダムな整数を返す関数`getRandomInt`
+3. 上記の関数を使って、様々なテストケースで動作を確認する
+
+### 課題5: 実用的な関数
+
+`docs/05/work/practical-functions.js`ファイルを作成し、以下の要件を満たすコードを書いてください：
+
+1. 文字列を引数として受け取り、その文字列が回文（前から読んでも後ろから読んでも同じ）かどうかを判定する関数`isPalindrome`を定義する
+2. 数値を引数として受け取り、その数値が素数かどうかを判定する関数`isPrime`を定義する
+3. 配列と値を引数として受け取り、その値が配列に含まれているかどうかを判定する関数`contains`を定義する
+4. 上記の関数を使って、様々なテストケースで動作を確認する
+
+> [!TIP]
+> 回文の例: "あいうえういあ"、"racecar"、"12321"
+> 素数の例: 2, 3, 5, 7, 11, 13, 17, 19, 23...（1と自分自身以外で割り切れない1より大きい自然数）
+
+## まとめ
+
+- 関数は特定の処理をまとめて名前を付けたもので、コードの再利用性と可読性を向上させる
+- JavaScriptでは関数宣言、関数式、アロー関数の3つの方法で関数を定義できる
+- 引数を使って関数にデータを渡し、戻り値を使って処理結果を受け取ることができる
+- デフォルト引数や可変長引数を使うことで、より柔軟な関数を作成できる
+- JavaScriptには文字列や数値などの組み込み関数やメソッドが豊富に用意されている
+- グローバル関数、文字列メソッド、Mathオブジェクトの関数を適切に使い分けることで効率的なプログラムが作成できる
+- 関数は値として扱うことができ、変数に代入したり他の関数の引数として渡したりできる
+
+> [!IMPORTANT]
+> 関数はプログラミングにおける重要な概念の一つです。
+> 適切に関数を定義し使用することで、保守しやすく再利用可能なコードを書くことができます。
+> また、JavaScriptの豊富な組み込み関数やメソッドを活用することで、効率的なプログラム開発が可能になります。
+> 次回の授業では、ファイルの分割とユニットテストについて学習します。
