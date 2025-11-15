@@ -4,8 +4,6 @@
 
 **関数**とは、特定の処理をまとめて名前を付けたもので、必要な時に何度でも呼び出して使うことができる仕組みです。関数を使うことで、同じ処理を何度も書く必要がなくなり、コードがより読みやすく、保守しやすくなります。
 
-プログラミングでも同様に、関連する処理をまとめて関数として定義することで、コードを整理し、再利用可能にすることができます。
-
 ## なぜ関数が必要なのか
 
 JavaScriptでは、基本的にプログラムは**上から下へ順番に実行**されます。この特性を踏まえて、関数を使う場合と使わない場合の違いを見てみましょう。
@@ -25,14 +23,12 @@ console.log(`商品A: ${priceA}円 + 税${taxAmountA}円 = ${totalPriceA}円`);
 
 console.log("=== 商品B の税込価格計算 ===");
 let priceB = 2500;
-// taxRate = 0.1; // 同じ税率だが再度定義が必要
 let taxAmountB = priceB * taxRate;
 let totalPriceB = priceB + taxAmountB;
 console.log(`商品B: ${priceB}円 + 税${taxAmountB}円 = ${totalPriceB}円`);
 
 console.log("=== 商品C の税込価格計算 ===");
 let priceC = 800;
-// taxRate = 0.1; // また同じ処理
 let taxAmountC = priceC * taxRate;
 let totalPriceC = priceC + taxAmountC;
 console.log(`商品C: ${priceC}円 + 税${taxAmountC}円 = ${totalPriceC}円`);
@@ -41,7 +37,7 @@ console.log(`商品C: ${priceC}円 + 税${taxAmountC}円 = ${totalPriceC}円`);
 この方法では以下の問題があります：
 
 1. **同じコードの重複**: 税込価格を計算する処理が3回も書かれている
-2. **修正が大変**: 税率が変更になった場合、すべての箇所を修正する必要がある
+2. **修正が大変**: 税率や計算する商品の数、結果として表示する文字フォーマットが変更になった場合、すべての箇所を修正する必要がある
 3. **コードが長くなる**: 処理が増えるほどコードが読みにくくなる
 4. **ミスが起きやすい**: 同じ処理を何度も書くため、タイプミスや計算ミスが発生しやすい
 
