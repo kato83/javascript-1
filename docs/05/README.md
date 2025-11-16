@@ -884,7 +884,40 @@ setTimeout(() => {
 > 回文の例: "あいうえういあ"、"racecar"、"12321"
 > 素数の例: 2, 3, 5, 7, 11, 13, 17, 19, 23...（1と自分自身以外で割り切れない1より大きい自然数）
 
-### TODO 自作 parseInt 関数を作成してみよう
+### 自作 parseInt 関数を作成してみよう
+
+`docs/05/work/my-parseint.js`ファイルを作成し [parseInt() - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/parseInt) と同等の機能をこれまでの内容を元に実装してみよう（車輪の再発明をしてみよう）。
+
+関数名は `myParseInt()` としてください。
+
+ヒント1：
+
+文字列は文字が繰り返されていると言えるので for を用いて繰り返し処理が出来ます。
+
+```js
+const text = '12345';
+for (let i = 0; i < text.length; i++) {
+  console.log(text[i]); // 1文字ずつ取得できる
+}
+```
+
+ヒント2：
+
+累乗は `**` で表現できます。
+
+```js
+console.log(10**0); // 10^0=1
+console.log(10**1); // 10^0=10
+console.log(10**2); // 10^0=100
+```
+
+ヒント3：
+
+`NaN` はコード上でもそのまま `NaN` と書くことで表現できます。
+
+```js
+console.log(NaN); // NaN
+```
 
 ## まとめ
 
