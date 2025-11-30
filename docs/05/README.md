@@ -891,6 +891,9 @@ setTimeout(() => {
 
 <summary>
 
+> [!CAUTION]
+> 課題7の実装は [次のコマ](https://github.com/kato83/javascript-1/blob/06/docs/06/README.md) の演習課題で実装します
+
 ### 課題7: 自作 parseInt 関数を作成してみよう
 
 </summary>
