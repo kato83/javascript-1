@@ -885,7 +885,15 @@ setTimeout(() => {
 > 回文の例: "あいうえういあ"、"racecar"、"12321"
 > 素数の例: 2, 3, 5, 7, 11, 13, 17, 19, 23...（1と自分自身以外で割り切れない1より大きい自然数）
 
+
+
+<details>
+
+<summary>
+
 ### 課題7: 自作 parseInt 関数を作成してみよう
+
+</summary>
 
 `docs/05/work/my-parseint.js`ファイルを作成し [parseInt() - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/parseInt) と同等の機能をこれまでの内容を元に実装してみよう（車輪の再発明をしてみよう）。
 
@@ -919,6 +927,8 @@ console.log(10**2); // 10^0=100
 ```js
 console.log(NaN); // NaN
 ```
+
+</details>
 
 ## まとめ
 
