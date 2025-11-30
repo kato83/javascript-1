@@ -47,7 +47,18 @@ export function myParseInt(str) {
     // 数字かどうかをチェック
     if (char >= "0" && char <= "9") {
       foundDigit = true;
-      const digit = char.charCodeAt(0) - "0".charCodeAt(0);
+      const digit = {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+      }[char];
       result = result * 10 + digit;
     } else {
       // 数字以外の文字が現れたら処理を終了
