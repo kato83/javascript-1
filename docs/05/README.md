@@ -885,14 +885,12 @@ setTimeout(() => {
 > 回文の例: "あいうえういあ"、"racecar"、"12321"
 > 素数の例: 2, 3, 5, 7, 11, 13, 17, 19, 23...（1と自分自身以外で割り切れない1より大きい自然数）
 
-
+> [!CAUTION]
+> 課題7の実装は [次のコマ](https://github.com/kato83/javascript-1/blob/06/docs/06/README.md) の演習課題で実装します
 
 <details>
 
 <summary>
-
-> [!CAUTION]
-> 課題7の実装は [次のコマ](https://github.com/kato83/javascript-1/blob/06/docs/06/README.md) の演習課題で実装します
 
 ### 課題7: 自作 parseInt 関数を作成してみよう
 
