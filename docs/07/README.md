@@ -1027,7 +1027,7 @@ deno test docs/07/work/book-object.test.js
 
 ### 課題2: メモリ機能付き電卓の作成
 
-`docs/07/work/calculator.js`ファイルを作成し、`docs/07/work/calculator.test.js`のテストがすべてパスするようにしてください：
+`docs/07/work/calculator.js`ファイルを作成し、当ドキュメントのサンプルコードにある電卓プログラムを改変して `docs/07/work/calculator.test.js`のテストがすべてパスするようにしてください：
 
 1. メモリ機能付き電卓オブジェクト`calculator`を作成し、エクスポートする（以下のプロパティとメソッドを含む）：
    - プロパティ: 
