@@ -1006,7 +1006,7 @@ for (const [key, value] of entries) {
 
 ## 実習課題
 
-### 課題1: 基本的なオブジェクトの作成（プロパティのみ）
+### 課題1-1: 基本的なオブジェクトの作成（プロパティのみ）
 
 `docs/07/work/book-object.js`ファイルを作成し、`docs/07/work/book-object.test.js`のテストがすべてパスするようにしてください：
 
@@ -1023,6 +1023,66 @@ for (const [key, value] of entries) {
 **テスト実行方法：**
 ```bash
 deno test docs/07/work/book-object.test.js
+```
+
+### 課題1-2: 車オブジェクトの作成
+
+`docs/07/work/car-object.js`ファイルを作成し、`docs/07/work/car-object.test.js`のテストがすべてパスするようにしてください：
+
+1. 車を表すオブジェクト`car`を作成し、エクスポートする（以下のプロパティを含む）：
+   - `brand`: メーカー名（文字列）
+   - `model`: 車種名（文字列）
+   - `year`: 年式（数値）
+   - `color`: 色（文字列）
+   - `mileage`: 走行距離（数値）
+   - `isRunning`: エンジンが動いているかどうか（論理値）
+2. 作成したオブジェクトの各プロパティにアクセスして値を表示する
+3. プロパティの値を変更する（例：走行距離の更新、エンジン状態の変更）
+4. 新しいプロパティを追加する（例：`fuelType`（燃料タイプ）、`price`（価格））
+
+**テスト実行方法：**
+```bash
+deno test docs/07/work/car-object.test.js
+```
+
+### 課題1-3: 映画オブジェクトの作成
+
+`docs/07/work/movie-object.js`ファイルを作成し、`docs/07/work/movie-object.test.js`のテストがすべてパスするようにしてください：
+
+1. 映画を表すオブジェクト`movie`を作成し、エクスポートする（以下のプロパティを含む）：
+   - `title`: 映画のタイトル（文字列）
+   - `director`: 監督名（文字列）
+   - `releaseYear`: 公開年（数値）
+   - `genre`: ジャンル（文字列）
+   - `duration`: 上映時間（分）（数値）
+   - `isWatched`: 視聴済みかどうか（論理値）
+2. 作成したオブジェクトの各プロパティにアクセスして値を表示する
+3. プロパティの値を変更する（例：視聴状態の変更）
+4. 新しいプロパティを追加する（例：`rating`（評価）、`language`（言語））
+
+**テスト実行方法：**
+```bash
+deno test docs/07/work/movie-object.test.js
+```
+
+### 課題1-4: 関数でオブジェクトを作成する（商品作成関数）
+
+`docs/07/work/create-product.js`ファイルを作成し、`docs/07/work/create-product.test.js`のテストがすべてパスするようにしてください：
+
+1. 商品オブジェクトを作成する関数`createProduct(name, price, category)`を実装し、エクスポートする
+2. 関数は以下のプロパティを持つオブジェクトを返す：
+   - `id`: 商品ID（自動生成される一意の数値）
+   - `name`: 商品名（引数で受け取った値）
+   - `price`: 価格（引数で受け取った値）
+   - `category`: カテゴリ（引数で受け取った値）
+   - `inStock`: 在庫状況（初期値はtrue）
+   - `createdAt`: 作成日時（現在の日時）
+3. 複数の商品オブジェクトを作成し、各プロパティの値を確認する
+4. 作成された商品のIDが一意であることを確認する
+
+**テスト実行方法：**
+```bash
+deno test docs/07/work/create-product.test.js
 ```
 
 ### 課題2: メモリ機能付き電卓の作成
