@@ -583,30 +583,6 @@ console.log(person.haveBirthday()); // "誕生日おめでとう！31歳にな�
 console.log(person.age);           // 31
 ```
 
-### ES6のメソッド短縮記法
-
-ES6（ECMAScript 2015）以降では、メソッドをより簡潔に定義できます：
-
-```js
-// 従来の書き方
-const oldStyle = {
-  greet: function(name) {
-    return `こんにちは、${name}さん！`;
-  }
-};
-
-// ES6の短縮記法
-const newStyle = {
-  greet(name) {
-    return `こんにちは、${name}さん！`;
-  }
-};
-
-// どちらも同じように動作
-console.log(oldStyle.greet("太郎")); // "こんにちは、太郎さん！"
-console.log(newStyle.greet("花子")); // "こんにちは、花子さん！"
-```
-
 ## ネストされたオブジェクト
 
 オブジェクトの中に別のオブジェクトを含めることができます。これを**ネストされたオブジェクト**と呼びます。
@@ -764,45 +740,6 @@ console.log(student2.study(3));
 
 console.log(student3.introduce());
 // "私は田中次郎です。21歳の3年生で、プログラミングを専攻しています。"
-```
-
-### ES6のプロパティ短縮記法
-
-ES6では、変数名とプロパティ名が同じ場合、短縮して書くことができます：
-
-```js
-// 従来の書き方
-function createProduct(name, price, category) {
-  return {
-    name: name,
-    price: price,
-    category: category,
-    
-    getInfo: function() {
-      return `${this.name} - ${this.category} - ¥${this.price}`;
-    }
-  };
-}
-
-// ES6の短縮記法
-function createProductES6(name, price, category) {
-  return {
-    name,        // name: name と同じ
-    price,       // price: price と同じ
-    category,    // category: category と同じ
-    
-    getInfo() {  // getInfo: function() と同じ
-      return `${this.name} - ${this.category} - ¥${this.price}`;
-    }
-  };
-}
-
-// どちらも同じように動作
-const product1 = createProduct("ノートパソコン", 80000, "電子機器");
-const product2 = createProductES6("マウス", 2500, "周辺機器");
-
-console.log(product1.getInfo()); // "ノートパソコン - 電子機器 - ¥80000"
-console.log(product2.getInfo()); // "マウス - 周辺機器 - ¥2500"
 ```
 
 ### オブジェクトを引数として受け取る関数
