@@ -3,6 +3,7 @@
 
 > [!CAUTION]
 > # 当課題はChatGPT等の生成AIツールの利用を禁止します。
+> # ただしmdn等、インターネット上の情報から検索することは許可とします。
 
 ## 目的
 - プログラミングの開発環境を自前でセットアップする能力を身につける
@@ -90,6 +91,7 @@ export sumArray(numbers) {
 
 ## 実行と確認方法
 - 環境セットアップ: ネット上で出てきたセットアップを参考にするか [javascript-1/README.md](https://github.com/kato83/javascript-1/blob/01/README.md) を参考に構築してください
+- テストファイルのダウンロード
 - テスト実行: `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` をプロジェクトルートで実行
 
 ### テスト実行方法
