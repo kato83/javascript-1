@@ -27,6 +27,10 @@ v8 13.7.152.14-rusty
 typescript 5.8.3
 ```
 
+### VSCodeの拡張機能の有効化
+
+#### [/docs/01/README.md の 1. 拡張機能のインストール及び使い方 を参考にセットアップしてください](https://github.com/kato83/javascript-1/tree/01/docs/01#1-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E5%8F%8A%E3%81%B3%E4%BD%BF%E3%81%84%E6%96%B9)
+
 ## ファイル構成
 
 | ファイル | 説明 |
