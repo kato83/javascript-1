@@ -95,7 +95,7 @@ export sumArray(numbers) {
   - 以下よりダウンロード又はコピペして `solution.js` の実装を進めてください
   - https://raw.githubusercontent.com/kato83/javascript-1/refs/heads/01/work1/solution.test.js
   - ( https://github.com/kato83/javascript-1/blob/01/work1/solution.test.js )
-- テスト実行: `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` をプロジェクトルートで実行
+- テスト実行: `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` を実行
 
 ### テスト実行方法
 
