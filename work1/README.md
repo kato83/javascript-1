@@ -17,6 +17,8 @@
 
 ## 提出方法
 - 以下Googleドライブの出席番号フォルダに `solution.js` 及び `solution.test.js` と `test-result.txt` ファイルをアップロードしてください。
+  - **`work1/` フォルダと `work2/` フォルダがあるので `work1/` にアップロードしてください**
+  - アップロード例: `work1/K101/` に`solution.js` 及び `solution.test.js` と `test-result.txt` ファイルをアップロード
 - https://drive.google.com/drive/folders/1eqBjhWxH6n3b0OW7iMVZZAA0HCGAGyk_?usp=sharing
 - ※上記GoogleドライブへのファイルアップロードにはGoogleアカウントでのログインが必須になります。
 
