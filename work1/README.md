@@ -3,6 +3,7 @@
 
 > [!CAUTION]
 > # 当課題はChatGPT等の生成AIツールの利用を禁止します。
+> # ただしmdn等、インターネット上の情報から検索することは許可とします。
 
 ## 目的
 - プログラミングの開発環境を自前でセットアップする能力を身につける
@@ -16,6 +17,8 @@
 
 ## 提出方法
 - 以下Googleドライブの出席番号フォルダに `solution.js` 及び `solution.test.js` と `test-result.txt` ファイルをアップロードしてください。
+  - **`work1/` フォルダと `work2/` フォルダがあるので `work1/` にアップロードしてください**
+  - アップロード例: `work1/K101/` に`solution.js` 及び `solution.test.js` と `test-result.txt` ファイルをアップロード
 - https://drive.google.com/drive/folders/1eqBjhWxH6n3b0OW7iMVZZAA0HCGAGyk_?usp=sharing
 - ※上記GoogleドライブへのファイルアップロードにはGoogleアカウントでのログインが必須になります。
 
@@ -90,7 +93,11 @@ export sumArray(numbers) {
 
 ## 実行と確認方法
 - 環境セットアップ: ネット上で出てきたセットアップを参考にするか [javascript-1/README.md](https://github.com/kato83/javascript-1/blob/01/README.md) を参考に構築してください
-- テスト実行: `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` をプロジェクトルートで実行
+- テストファイルのダウンロード: 
+  - 以下よりダウンロード又はコピペして `solution.js` の実装を進めてください
+  - https://raw.githubusercontent.com/kato83/javascript-1/refs/heads/01/work1/solution.test.js
+  - ( https://github.com/kato83/javascript-1/blob/01/work1/solution.test.js )
+- テスト実行: `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` を実行
 
 ### テスト実行方法
 
