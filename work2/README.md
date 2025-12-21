@@ -67,6 +67,8 @@ work1では決められた関数を実装する課題でしたが、work2では*
 - **アンケート集計ツール** - 回答データの分析・可視化
 - **CSV処理ツール** - データの変換・集計機能
 
+https://drive.google.com/file/d/1kYTyb6nhA0VII_Ek60C5ZHevl9tPNbot/view
+
 ## 提出物
 
 ### 必須ファイル
