@@ -5,38 +5,43 @@
 > # 当課題はChatGPT等の生成AIツールの利用を禁止します。
 
 ## 目的
+- プログラミングの開発環境を自前でセットアップする能力を身につける
 - 授業で学んだ基本操作を自力で実装して確実に理解する
 - テスト観点（どのようなケースを考えるか）を言語化する練習
 
 ## 提出物
-- `work1/solution.js` — 下記の関数を実装してください。ファイル冒頭に「テスト観点」のコメントを必ず記入すること（後述）。
-- `work1/solution.test.js` — 既に作成済みのテストファイルですが、追加のテストの実装や、テストでチェックしている内容やコメントを追加することで加点対象とします。
+- `work1/solution.js` - 下記の関数を実装してください。ファイル冒頭に「テスト観点」のコメントを必ず記入すること（後述）。
+- `work1/solution.test.js` - 既に作成済みのテストファイルですが、追加のテストの実装や、テストでチェックしている内容やコメントを追加することで加点対象とします。
+- `test-result.txt` - `deno test work1/solution.test.js` コマンドを実行した結果をコピペで
 
 ## 提出方法
-- 以下Googleドライブの出席番号フォルダに `solution.js` 及び `solution.test.js` ファイルをアップロードしてください。
+- 以下Googleドライブの出席番号フォルダに `solution.js` 及び `solution.test.js` と `test-result.txt` ファイルをアップロードしてください。
 - https://drive.google.com/drive/folders/1eqBjhWxH6n3b0OW7iMVZZAA0HCGAGyk_?usp=sharing
 - ※上記GoogleドライブへのファイルアップロードにはGoogleアカウントでのログインが必須になります。
 
 > [!NOTE]
 > 万が一Googleドライブへアップロードできない場合
-> `solution.js` 及び `solution.test.js` ファイルを添付したメールを送信する方法も許可します。
+> `solution.js` 及び `solution.test.js` と `test-result.txt` ファイルを添付したメールを送信する方法も許可します。
 > 宛先: `2025-js1-submission@pulog.jp`
 > 件名: `K101 - 2025年度JS1課題1提出` （ `K101` を自分の出席番号に置き換えてください）
-> 課題の2ファイルの添付を忘れないようにしてください
+> 課題の3ファイルの添付を忘れないようにしてください
 
 ## 提出期限
 
 ### 2026/01/19（月曜日）までとします。
 
-## 採点基準（例）
-- 正常動作（テスト通過）: 60%
+## 採点基準
+- DenoがPCでセットアップされていること: 15%
+  - `test-result.txt` が `deno test` で出力されるテスト結果の文字列であることをベースに確認します
+- 正常動作（テスト通過）: 45%
+  - `deno test solution.test.js` のテストがパスしていることをベースに確認します 
 - 可読性・命名・簡潔さ: 20%
 - テスト観点の明確さ: 10%
 - コードコメントの適切さ: 10%
 
 ## 課題内容
 
-`solution.js` にて下記の関数を `export` を付けつつ実装して `solution.test.js` で関数を読み込めるようにしてテストをパスするように実装してください。
+以下6問を `solution.test.js` のテストコードをパスするように（okとなるように） `solution.js` を実装してください。
 
 実装イメージ
 
@@ -52,24 +57,30 @@ export sumArray(numbers) {
 }
 ```
 
-1. `sumArray(numbers)`
+1. `sumArray(numbers)` 関数の実装
    - 引数: 数値の配列
-   - 返却: 配列内の合計数値（空配列なら `0`）
-2. `average(numbers)`
+   - 返却（戻り値）: 配列内の合計数値（空配列なら `0`）
+   - その他: `solution.test.js` のテストコードをパスするように実装するものとします
+2. `average(numbers)` 関数の実装
    - 引数: 数値の配列
-   - 返却: 平均値（小数可）。空配列の場合は `0` を返すこと。
-3. `unique(arr)`
+   - 返却（戻り値）: 平均値（小数可）。空配列の場合は `0` を返すこと。
+   - その他: `solution.test.js` のテストコードをパスするように実装するものとします
+3. `unique(arr)` 関数の実装
    - 引数: 任意の値の配列
-   - 返却: 元の順序を保持したユニークな要素配列
-4. `findLongestString(arr)`
+   - 返却（戻り値）: 元の順序を保持したユニークな要素配列
+   - その他: `solution.test.js` のテストコードをパスするように実装するものとします
+4. `findLongestString(arr)` 関数の実装
    - 引数: 文字列の配列
-   - 返却: 最も長い文字列（同長があれば先に現れたもの）。配列が空なら空文字列 `""` を返す。
-5. `toTitleCase(str)`
+   - 返却（戻り値）: 最も長い文字列（同長があれば先に現れたもの）。配列が空なら空文字列 `""` を返す。
+   - その他: `solution.test.js` のテストコードをパスするように実装するものとします
+5. `toTitleCase(str)` 関数の実装
    - 引数: 文字列（複数の単語を含む可能性あり）
-   - 返却: 各単語の先頭を大文字にした文字列（例: "hello world" → "Hello World"）
-6. `daysUntilNewYear(date)`
+   - 返却（戻り値）: 各単語の先頭を大文字にした文字列（例: "hello world" → "Hello World"）
+   - その他: `solution.test.js` のテストコードをパスするように実装するものとします
+6. `daysUntilNewYear(date)` 関数の実装
    - 引数: `Date` オブジェクト
-   - 返却: 与えた日付から次の年の `1/1` までの残り日数（整数、当日なら `0`）
+   - 返却（戻り値）: 与えた日付から次の年の `1/1` までの残り日数（整数、当日なら `0`）
+   - その他: `solution.test.js` のテストコードをパスするように実装するものとします
 
 ## 必須ドキュメント（テスト観点）
 - `solution.js` の先頭に、あなたが考えた「テスト観点」をコメントで書いてください。具体例:
@@ -78,7 +89,8 @@ export sumArray(numbers) {
   - 型が異なる入力（文字列が入ってきたらどうするか）
 
 ## 実行と確認方法
-- テスト実行: `solution.js` 及び `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` をプロジェクトルートで実行
+- 環境セットアップ: ネット上で出てきたセットアップを参考にするか [javascript-1/README.md](https://github.com/kato83/javascript-1/blob/01/README.md) を参考に構築してください
+- テスト実行: `solution.test.js` が存在するフォルダに移動してから `deno test solution.test.js` をプロジェクトルートで実行
 
 ### テスト実行方法
 
@@ -86,3 +98,6 @@ export sumArray(numbers) {
 cd work1/
 deno test solution.test.js
 ```
+
+> [!TIP]
+> `deno test ...` は `deno.exe test ...` や `C:\任意のパス\deno.exe test ...` のようなフォーマットでのコマンド実行もよく、あくまで deno のテストコマンドが実行できれば良いものとします
