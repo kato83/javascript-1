@@ -103,7 +103,6 @@ https://drive.google.com/file/d/1kYTyb6nhA0VII_Ek60C5ZHevl9tPNbot/view
 work2/
 ├── README.md              # プロジェクト説明書（必須）
 ├── app.js                 # メインプログラム（必須）
-├── screenshot.png         # 実行結果（必須）
 ├── app.test.js           # テストファイル（任意）
 ├── deno.json             # 設定ファイル（任意）
 └── data/                 # データフォルダ（任意）
