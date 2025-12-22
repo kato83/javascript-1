@@ -54,7 +54,7 @@
 /**
  * 配列内の合計数値（空配列なら `0`）を返す関数
  */
-export sumArray(numbers) {
+export function sumArray(numbers) {
   // 色々な処理...
   return /* 適切な戻り値 */;
 }
