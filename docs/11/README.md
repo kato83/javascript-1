@@ -315,7 +315,9 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
     <h1>お問い合わせ管理画面</h1>
     <p>受信したお問い合わせ: ${submissions.length}件</p>
     
-    ${submissions.length > 0 ? `
+    ${
+      submissions.length > 0
+        ? `
     <table>
         <thead>
             <tr>
@@ -327,25 +329,31 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
             </tr>
         </thead>
         <tbody>
-            ${submissions.map(sub => `
+            ${
+          submissions.map((sub) => `
             <tr>
                 <td>${sub.timestamp}</td>
                 <td>${sub.name}</td>
                 <td>${sub.email}</td>
-                <td>${getCategoryName(sub.category)}</td>
-                <td>${sub.message.substring(0, 50)}${sub.message.length > 50 ? '...' : ''}</td>
+                <td>${sub.category}</td>
+                <td>${sub.message.substring(0, 50)}${
+            sub.message.length > 50 ? "..." : ""
+          }</td>
             </tr>
-            `).join('')}
+            `).join("")
+        }
         </tbody>
     </table>
-    ` : '<p class="no-data">まだお問い合わせはありません。</p>'}
+    `
+        : '<p class="no-data">まだお問い合わせはありません。</p>'
+    }
     
     <p><a href="/">ホームに戻る</a></p>
 </body>
 </html>`;
 
     return new Response(adminHtml, {
-      headers: { "content-type": "text/html; charset=utf-8" }
+      headers: { "content-type": "text/html; charset=utf-8" },
     });
   }
 
@@ -353,7 +361,7 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
   if (method === "POST" && pathname === "/submit") {
     try {
       const formData = await request.formData();
-      
+
       const name = formData.get("name");
       const email = formData.get("email");
       const category = formData.get("category");
@@ -362,7 +370,7 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
       if (!name || !email || !category || !message) {
         return new Response("すべての項目を入力してください", {
           status: 400,
-          headers: { "content-type": "text/plain; charset=utf-8" }
+          headers: { "content-type": "text/plain; charset=utf-8" },
         });
       }
 
@@ -373,7 +381,7 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
         email: email,
         category: category,
         message: message,
-        timestamp: new Date().toLocaleString("ja-JP")
+        timestamp: new Date().toLocaleString("ja-JP"),
       };
 
       submissions.push(submission);
@@ -382,23 +390,30 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
 
       // 成功ページを表示（省略）
       return new Response("送信完了", {
-        headers: { "content-type": "text/plain; charset=utf-8" }
+        headers: { "content-type": "text/plain; charset=utf-8" },
       });
-
     } catch (error) {
       console.error("フォーム処理エラー:", error);
       return new Response("エラーが発生しました", {
         status: 500,
-        headers: { "content-type": "text/plain; charset=utf-8" }
+        headers: { "content-type": "text/plain; charset=utf-8" },
       });
     }
   }
 
   return new Response("ページが見つかりません", {
     status: 404,
-    headers: { "content-type": "text/plain; charset=utf-8" }
+    headers: { "content-type": "text/plain; charset=utf-8" },
   });
 });
+```
+
+```
+curl -X POST http://localhost:8000/submit ^
+  -F "name=山田太郎" ^
+  -F "email=yamada@example.com" ^
+  -F "category=general" ^
+  -F "message=お問い合わせ内容のテストです"
 ```
 
 ### JSONファイルでのデータ保存
