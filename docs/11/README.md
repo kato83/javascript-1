@@ -709,7 +709,7 @@ deno run --allow-net docs/11/work/basic-server.js
 2. 以下のページを配信：
    - `/`: ホームページ（HTML）
    - `/about`: 自己紹介ページ（HTML）
-   - `/contact`: 連絡先ページ（HTML）
+   - `/hobby`: 趣味ページ（HTML）
    - `/styles.css`: CSSファイル
 3. 各ページにナビゲーションメニューを含める
 
