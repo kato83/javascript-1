@@ -506,6 +506,10 @@ const server = Deno.serve({ port: 8000 }, async (request) => {
 // 実行時に必要な権限: --allow-net --allow-read --allow-write
 ```
 
+```text
+deno run --allow-net --allow-read --allow-write docs\11\work\example\http-1.ts
+```
+
 ## 静的ファイルの配信
 
 ### CSSファイルの分離
