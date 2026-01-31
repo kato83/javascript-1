@@ -1,3 +1,5 @@
 tools/deno.exe
 coverage/*
 work1-answer/*
+submission-box/
+score.md
