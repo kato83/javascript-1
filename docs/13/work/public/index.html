@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO App (Deno + SQLite)</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <p class="app__eyebrow">Lesson 13</p>
+        <h1>TODO App</h1>
+        <p class="app__subtitle">Deno + SQLite + Fetch API</p>
+      </header>
+
+      <section class="card">
+        <form id="todo-form" class="todo-form">
+          <input
+            id="todo-input"
+            type="text"
+            placeholder="やることを入力してください"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">追加</button>
+        </form>
+
+        <div class="list-header">
+          <h2>TODO一覧</h2>
+          <button id="refresh-button" type="button" class="ghost">更新</button>
+        </div>
+
+        <ul id="todo-list" class="todo-list"></ul>
+        <template id="todo-empty-template">
+          <li class="todo-empty">TODOがありません</li>
+        </template>
+        <template id="todo-item-template">
+          <li class="todo-item">
+            <input class="todo-item__check" type="checkbox" />
+            <span class="todo-item__title"></span>
+            <div class="todo-item__actions">
+              <button class="todo-item__edit" type="button">編集</button>
+              <button class="todo-item__delete danger" type="button">削除</button>
+            </div>
+          </li>
+        </template>
+      </section>
+
+      <footer class="app__footer">
+        <p>サーバーは Deno.serve / DB は SQLite / 通信は fetch です。</p>
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
