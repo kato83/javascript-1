@@ -95,7 +95,8 @@ await fetch("/api/todos", {
 ```
 
 **ポイント**
-- `fetch` は Promise なので `await` で待つ
+- `fetch` 関数でHTTP通信を送って受け取ることが出来る
+  - [フェッチ API - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/Fetch_API)
 - `content-type` を JSON にする
 - 更新は `PUT /api/todos/:id`
 - 削除は `DELETE /api/todos/:id`
